@@ -1,0 +1,56 @@
+<template>
+    <!--indicator image-->
+    <lightning-progress-indicator current-step={currentStep} type="base" variant="base">
+        <lightning-progress-step label="Step 1" value="1"></lightning-progress-step>
+        <lightning-progress-step label="Step 2" value="2"></lightning-progress-step>
+        <lightning-progress-step label="Step 3" value="3"></lightning-progress-step>
+        <lightning-progress-step label="Step 4" value="4"></lightning-progress-step>
+    </lightning-progress-indicator><br><br>
+
+<!--Training Form-->
+<lightning-card>
+        <lightning-record-edit-form object-api-name="Training__c">
+            <lightning-messages> </lightning-messages>
+            <!--step1-->
+            <div class="stepOne">
+                <lightning-input-field field-name="Name">
+                </lightning-input-field>
+                <lightning-input-field field-name="Patient_Name__c"></lightning-input-field>
+                <lightning-input-field field-name="HCP_Name__c"></lightning-input-field>
+                <lightning-input-field field-name="Doc_Type__c"></lightning-input-field>
+                <lightning-input-field value={type} field-name="Type__c" onchange={changeHandler}>
+                </lightning-input-field>
+                <lightning-button class="slds-m-top_small" label="Next" onclick={goToStepTwo}></lightning-button>
+            </div>
+           <!--step2-->
+            <div class="stepTwo slds-hide">
+                <lightning-input-field class="Documents slds-hide" field-name="Document_Formats__c">
+                </lightning-input-field>
+                <lightning-input-field class="Telephonic slds-hide" field-name="Dial_In_Numbers__c">
+                </lightning-input-field>
+                <lightning-input-field class="inPerson slds-hide" field-name="Training_Center__c">
+                </lightning-input-field>
+                <lightning-input-field class="online slds-hide" field-name="Web_Link__c">
+                </lightning-input-field>
+                <lightning-input-field class="onlinea slds-hide" field-name="Website_Name__c">
+                </lightning-input-field>
+                <lightning-button class="slds-m-top_small" label="Previous" onclick={goBackToStepOne}>
+                </lightning-button>
+                <lightning-button class="slds-m-top_small" label="Next" onclick={wizardDecider}></lightning-button>
+            </div>
+            <!--step3-->
+            <div class="stepThree slds-hide">
+                <lightning-input-field field-name="Scheduled_Time__c"></lightning-input-field>
+                <lightning-button class="slds-m-top_small" label="Previous" onclick={goBackToStepTwo}>
+                </lightning-button>
+                <lightning-button class="slds-m-top_small" label="Next" onclick={goToStepFour}></lightning-button>        
+            </div>
+            <!--step4-->
+            <div class="stepFour slds-hide">
+                <lightning-input-field field-name="Feedback__c"> </lightning-input-field>
+                <lightning-button class="slds-m-top_small" label="Save" type="submit" onclick={handleSave}>
+                </lightning-button>
+            </div>
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <c-wizard header="Training Process" variant="path" current-step="step-1" oncomplete={saveResponse}>
+        <c-wizard-step label="Select Mode of Training" name="step-1">
+            <lightning-input label="Training Name" data-field-name="Name" required></lightning-input>
+            <!--<lightning-input label="Patient Name" data-field-name="Patient_Name__c"></lightning-input>
+            <lightning-input label="HCP Name" data-field-name="HCP_Name__c"></lightning-input>-->
+            <lightning-input label="Type" data-field-name="Type__c"></lightning-input>
+        </c-wizard-step>
+      
+        <c-wizard-step label="Training Modes" name="step-2">
+            <lightning-input label="HCP Name" data-field-name="HCP_Name__c"></lightning-input>
+           <!--<lightning-input label="Training Name" type="text" data-field-name="Name"></lightning-input>-->
+        </c-wizard-step>
+    </c-wizard>
+</template>
